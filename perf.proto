@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package perf;
+
+service PerfService {
+  rpc ExchangeData (DataRequest) returns (DataResponse) {}
+}
+
+message DataRequest {
+  bytes payload = 1;
+}
+
+message DataResponse {
+  bytes payload = 1;
+}
