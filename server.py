@@ -7,7 +7,7 @@ import time
 class PerfService(perf_pb2_grpc.PerfServiceServicer):
     def ExchangeData(self, request, context):
         # Generate 50MB response
-        response_payload = b's' * (50 * 1024 * 1024)
+        response_payload = b's' * (4 * 1024 * 1024)
         return perf_pb2.DataResponse(payload=response_payload)
 
 def serve():

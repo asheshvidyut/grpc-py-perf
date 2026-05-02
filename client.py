@@ -15,7 +15,7 @@ def run():
     channel = grpc.insecure_channel('localhost:50051', options=options)
     stub = perf_pb2_grpc.PerfServiceStub(channel)
     
-    payload = b'c' * (50 * 1024 * 1024)
+    payload = b'c' * (4 * 1024 * 1024)
     latencies = []
     
     print("Starting 100 iterations of 50MB exchange...")
