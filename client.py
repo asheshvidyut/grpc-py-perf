@@ -3,8 +3,26 @@ import perf_pb2
 import perf_pb2_grpc
 import time
 import statistics
+import argparse
 
 def run():
+    parser = argparse.ArgumentParser(description='gRPC Performance Client')
+    parser.add_argument('--payload_size', type=int, default=4,
+                        help='Payload size in MB (default: 4, max: 50)')
+    parser.add_argument('--port', type=int, default=50051,
+                        help='Port to connect to (default: 50051)')
+    args = parser.parse_args()
+
+    if args.payload_size > 50:
+        print("Error: payload_size cannot exceed 50MB")
+        return
+    if args.payload_size < 1:
+        print("Error: payload_size must be at least 1MB")
+        return
+
+    payload_size = args.payload_size
+    print(f"Client configured with {payload_size}MB payload.")
+
     # Set max message size to 60MB
     MAX_MESSAGE_LENGTH = 60 * 1024 * 1024
     options = [
@@ -12,13 +30,13 @@ def run():
         ('grpc.max_receive_message_length', MAX_MESSAGE_LENGTH),
     ]
     
-    channel = grpc.insecure_channel('localhost:50051', options=options)
+    channel = grpc.insecure_channel(f'localhost:{args.port}', options=options)
     stub = perf_pb2_grpc.PerfServiceStub(channel)
     
-    payload = b'c' * (4 * 1024 * 1024)
+    payload = b'c' * (payload_size * 1024 * 1024)
     latencies = []
     
-    print("Starting 100 iterations of 50MB exchange...")
+    print(f"Starting 100 iterations of {payload_size}MB exchange...")
     
     for i in range(100):
         start_time = time.perf_counter()
