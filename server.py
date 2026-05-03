@@ -31,8 +31,8 @@ def serve():
     payload_size = args.payload_size
     print(f"Server configured with {payload_size}MB payload.")
 
-    # Set max message size to 60MB to accommodate 50MB + overhead
-    MAX_MESSAGE_LENGTH = 150 * 1024 * 1024
+    # Set max message size to 150MB to accommodate 50MB + overhead
+    MAX_MESSAGE_LENGTH = 1500 * 1024 * 1024
     options = [
         ('grpc.max_send_message_length', MAX_MESSAGE_LENGTH),
         ('grpc.max_receive_message_length', MAX_MESSAGE_LENGTH),
