@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-PAYLOAD_SIZES=(4 8 16 32 64)
+PAYLOAD_SIZES=(4 16 32 64 128)
 # Environment:Port mapping
 ENVS=("venv-opt/bin/python:50051" "venv-master/bin/python:50052")
 
