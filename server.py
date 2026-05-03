@@ -21,7 +21,7 @@ def serve():
                         help='Port to listen on (default: 50051)')
     args = parser.parse_args()
 
-    if args.payload_size > 100:
+    if args.payload_size > 1000:
         print("Error: payload_size cannot exceed 50MB")
         return
     if args.payload_size < 1:
