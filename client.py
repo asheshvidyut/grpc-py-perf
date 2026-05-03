@@ -13,7 +13,7 @@ def run():
                         help='Port to connect to (default: 50051)')
     args = parser.parse_args()
 
-    if args.payload_size > 50:
+    if args.payload_size > 100:
         print("Error: payload_size cannot exceed 50MB")
         return
     if args.payload_size < 1:
