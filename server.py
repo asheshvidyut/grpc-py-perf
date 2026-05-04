@@ -16,7 +16,7 @@ class PerfService(perf_pb2_grpc.PerfServiceServicer):
 def serve():
     parser = argparse.ArgumentParser(description='gRPC Performance Server')
     parser.add_argument('--payload_size', type=int, default=4,
-                        help='Payload size in MB (default: 4, max: 50)')
+                        help='Payload size in MB (default: 4, max: 1000)')
     parser.add_argument('--port', type=int, default=50051,
                         help='Port to listen on (default: 50051)')
     args = parser.parse_args()
