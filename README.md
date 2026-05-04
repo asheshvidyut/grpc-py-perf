@@ -59,6 +59,6 @@ python3 client.py --payload_size 10 --port 50052
 
 - **Default Port:** 50051
 - **Default Payload Size:** 4 MB
-- **Maximum Payload Size:** 50 MB
+- **Maximum Payload Size:** 1000 MB
 - **Minimum Payload Size:** 1 MB
 - **gRPC Max Message Length:** Configured to 60 MB to accommodate payload and overhead.
